@@ -7,7 +7,7 @@ import RecipePage from "../RecipePage";
 const App = () => {
   const [cocktailRandom, setCocktailRandom] = useState(null);
   const [error, setError] = useState("");
-  const [queriedCocktails, setqueriedCocktails] = useState([]);
+  const [queriedCocktails, setQueriedCocktails] = useState([]);
 
   const getInfo = () => {
     Promise.resolve(apiCalls.getRandomCocktail())
@@ -17,25 +17,15 @@ const App = () => {
         // sortingRecipeByItems(cocktailRandom)
       })
       .catch((err) => setError(err.message));
-      if(cocktailRandom) {
-      sortingRecipeByItems(cocktailRandom)
-      }
   };
 
-  const sortingRecipeByItems = (cocktail) => {
-    const cocktailData = Object.entries(cocktail)
-    const ingedients = cocktailData.reduce((ingredients, item) => {
-
-    })
-    console.log(cocktailData)
-  }
   const searchCocktailByName = (cocktailName) => {
     // const cocktailKeyword = cocktailName.toLowerCase();
     Promise.resolve(apiCalls.getCocktailByName())
       .then((data) => {
         if(data.drinks) {
           
-        setqueriedCocktails(data.drinks);
+        setQueriedCocktails(data.drinks);
         } else {
           console.log("sorry no such cocktail")
         }
@@ -49,7 +39,7 @@ const App = () => {
       .then((data) => {
         if(data.drinks) {
           // console.log(data)
-        setqueriedCocktails(data.drinks);
+        setQueriedCocktails(data.drinks);
         } else {
           console.log("sorry no such ingredients in our recipes")
         }

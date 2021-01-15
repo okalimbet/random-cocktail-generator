@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import './RecipePage.scss';
 import { apiCalls } from "../../apiCalls";
 import { Link } from 'react-router-dom'
+import rightButton from "../../Assets/right-button.png";
+import favButton from "../../Assets/favorite-button.png";
+
 
 const RecipePage = ({ randomRecipe }) => {
   const { 
@@ -45,34 +48,46 @@ const RecipePage = ({ randomRecipe }) => {
 
   return (
     <section key={idDrink} className="recipe-view" data-testid={`recipe-view-${idDrink}`}> 
-      <h1 className="title-main">Recipe</h1>
-      <h2 className="title-drink-name">{strDrink}</h2>
-      <section className="left-side">
-        <img className="image-drink" src={strDrinkThumb}/>
-        <ul className="list-ingredients">
-          {
-            ingredientsAll.map((ingredient, index) => {
-              return (
-                <li className="ingredient">{ingredient.toLowerCase()} - {measuresAll[index].toLowerCase()}</li>
-              )
-            })
-          }
-        </ul>
-      </section>
-      <section className="right-side">
-          <h3 className="title-secondary">Instructions</h3>
-          <Link to="/favorites" className="link-redirect">
-            <h3 className="title-redirect">Go to my favorites</h3>
-            <img className="image-redirect" src=''/>
-          </Link>
-          <div className="recipe-details-container">
-            <p className="recipe-detail">{strCategory}</p>
-            <p className="recipe-detail">{strGlass}</p>
-            <p className="recipe-detail">{strInstructions}</p>
-          </div>
-          <div className="button-favorite-wrapper">
-            <img className="button-favorite"/>
-          </div>
+      <nav>
+        <div className="titles-container">
+          <h1 className="title-main">Recipe</h1>
+          <h2 className="title-drink-name">{strDrink}</h2>
+        </div>
+        <Link to="/favorites" className="link-redirect">
+          <h3 className="title-redirect">Go to my favorites</h3>
+          <img className="image-redirect" src={rightButton}/>
+        </Link>
+      </nav>
+      <section className="sides-container">
+        <section className="left-side">
+          <img className="image-drink" src={strDrinkThumb}/>
+          <h3 className="title-secondary">Ingredients</h3>
+          <ul className="list-ingredients">
+            {
+              ingredientsAll.map((ingredient, index) => {
+                if(ingredient && measuresAll[index]) {
+                  return (
+                    <li className="ingredient">{ingredient.toLowerCase()} - {measuresAll[index].toLowerCase()}</li>
+                  )
+                } else {
+                  <li className="ingredient">{ingredient.toLowerCase()}</li>
+                }
+              })
+              
+            }
+          </ul>
+        </section>
+        <section className="right-side">
+            <h3 className="title-secondary">Instructions</h3>
+            <div className="recipe-details-container">
+              <p className="recipe-detail">{strCategory}</p>
+              <p className="recipe-detail">{strGlass}</p>
+              <p className="recipe-detail">{strInstructions}</p>
+            </div>
+            <button onClick="" className="button-favorite-wrapper">
+              <img className="button-favorite" src={favButton}/>
+            </button>
+        </section>
       </section>
     </section>
   )

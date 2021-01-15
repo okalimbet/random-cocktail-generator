@@ -24,6 +24,6 @@ export const apiCalls = {
 
   getCocktailByIngredient: (ingredientName) => {
     // return getData(`${urlBody}-=${ingredientName}`);
-    return getData(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=v`);
+    return getData(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=vo`);
   }
 }
