@@ -1,0 +1,105 @@
+@import "../../styles/variables";
+
+.recipe-view {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 20%;
+  margin: 0;
+}
+
+.titles-container {
+  height: 5em;
+  margin: 0em 0 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-redirect {
+  height: 5em;
+  margin: 2em;
+  position: absolute;
+  right: 2em;
+  display: flex;
+}
+
+.image-redirect {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.title-main {
+  font-size: 2em;
+  margin: 0.5em;
+}
+
+.title-drink-name {
+  font-size: 1.5em;
+  margin: 0.5em;
+}
+
+.image-drink{
+  width: 20em;
+  margin-top: 1em;
+}
+
+.sides-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 75%;
+  margin-top: 2em;
+}
+
+.left-side {
+  height: 100%;
+  width: 38vw;
+  position: relative;
+  margin: 1.5em;
+}
+
+.right-side {
+  height: 100%;
+  width: 60vw;
+  position: relative;
+  margin: 1.5em;
+}
+
+.button-favorite-wrapper {
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid $main-red;
+}
+
+.list-ingredients {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ingredient {
+  font-size: 1em;
+  margin: 0.7em 0;
+  font-style: italic;
+}
+
+.recipe-details-container {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-favorite-wrapper {
+  position: absolute;
+  right: 5em;
+  top: 33em;
+}
