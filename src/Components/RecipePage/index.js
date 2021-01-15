@@ -11,8 +11,8 @@ const RecipePage = ({ randomRecipe }) => {
     strGlass
   } = randomRecipe;
 
-  const [ingredientsItems, setIngredientsItems] = useState([])
-  const [measures, setMeasures] = useState([])
+  const [ingredientsAll, setIngredientsAll] = useState([])
+  const [measuresAll, setMeasuresAll] = useState([])
   console.log(randomRecipe)
   const ingredientItem = 'strIngredient';
   const measureItem = 'strMeasure'
@@ -32,6 +32,12 @@ const RecipePage = ({ randomRecipe }) => {
     return items;
   }
 
+  const getAllIngredientsMeasures = () => {
+    const ingredients = sortingRecipeByItems(randomRecipe, ingredientItem);
+    const measures = sortingRecipeByItems(randomRecipe, measureItem);
+    setIngredientsAll(ingredients);
+    setMeasuresAll(measures)
+  }
 
   useEffect(() => getAllIngredientsMeasures(), []);
 
