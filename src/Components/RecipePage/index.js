@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './RecipePage.scss';
-// import { apiCalls } from "../../apiCalls";
 import { Link } from 'react-router-dom'
 import rightButton from "../../Assets/right-button.png";
 import favButton from "../../Assets/favorite-button.png";
