@@ -22,8 +22,8 @@ const FavoritePage = ({ favoriteRecipes }) => {
           {
             favoriteRecipes.map(cocktail => {
               return (
-                <article>
-                  <div className="card-wrapper" key={`fav-drink-${cocktail.idDrink}`}>
+                <article key={`fav-drink-${cocktail.idDrink}`}>
+                  <div className="card-wrapper">
                   <img className="card-picture" src={cocktail.strDrinkThumb} alt="cocktail"/>
                   <p>{cocktail.strDrink}</p>
                 </div>
