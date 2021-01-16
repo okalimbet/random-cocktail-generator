@@ -8,6 +8,7 @@ const App = () => {
   const [cocktailRandom, setCocktailRandom] = useState(null);
   const [error, setError] = useState("");
   const [queriedCocktails, setQueriedCocktails] = useState([]);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const getInfo = () => {
     Promise.resolve(apiCalls.getRandomCocktail())
@@ -20,7 +21,6 @@ const App = () => {
   };
 
   const searchCocktailByName = (cocktailName) => {
-    // const cocktailKeyword = cocktailName.toLowerCase();
     Promise.resolve(apiCalls.getCocktailByName())
       .then((data) => {
         if(data.drinks) {
@@ -34,11 +34,9 @@ const App = () => {
   };
 
   const searchCocktailByIngredient = (cocktailIngredient) => {
-    // const cocktailKeyword = cocktailIngredient.toLowerCase();
     Promise.resolve(apiCalls.getCocktailByIngredient())
       .then((data) => {
         if(data.drinks) {
-          // console.log(data)
         setQueriedCocktails(data.drinks);
         } else {
           console.log("sorry no such ingredients in our recipes")
@@ -47,19 +45,33 @@ const App = () => {
       .catch((err) => setError(err.message));
   }
 
-  useEffect(() => getInfo(), {});
-  // useEffect(() => {sortingRecipeByItems(cocktailRandom), []);
+  const addFavoriteRecipes = (id) => {
+      const isDuplicate = favoriteRecipes.find(recipe => {
+      return recipe.idDrink === id
+    })
+    if(!isDuplicate) {
+      setFavoriteRecipes([...favoriteRecipes, cocktailRandom])
+    }
+  }
+
+  useEffect(() => getInfo(), []);
   
   return (
     <main className="App">
-      {cocktailRandom && <Route
-        exact path="/recipe/" 
-        render={()=>(
-        <RecipePage
-          randomRecipe = {cocktailRandom}/>)}/> 
-        }
+      {cocktailRandom && 
+        <Route
+          exact path="/recipe/" 
+          render={() => (
+            <RecipePage
+              randomRecipe={cocktailRandom}
+              addFavoriteRecipes={addFavoriteRecipes}
+              getInfo={getInfo}
+            /> 
+          )}
+        />
+      }
     </main>
-  );
+  )
 }
 
 export default App;
