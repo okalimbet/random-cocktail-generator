@@ -35,7 +35,7 @@ const App = () => {
   return (
     <main className="App">
       <Route 
-        exact path="/welcome" 
+        exact path="/" 
         component={WelcomePage} 
       />
       {cocktailRandom && 

@@ -39,14 +39,14 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
     console.log(idDrink)
   }
 
-  const getAllIngredientsMeasures = () => {
+  const getAllIngredientsMeasures = (e) => {
     const ingredients = sortingRecipeByItems(randomRecipe, ingredientItem);
     const measures = sortingRecipeByItems(randomRecipe, measureItem);
     setIngredientsAll(ingredients);
     setMeasuresAll(measures)
   }
 
-  useEffect(() => getAllIngredientsMeasures(), [ingredientsAll]);
+  useEffect(() => getAllIngredientsMeasures(), [randomRecipe]);
 
 
   return (
@@ -89,7 +89,6 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
             </div>
             <button 
               onClick={handleClick} className="button-favorite-wrapper"
-              disabled={isFavorite ? true : false}
               >
               <img className="button-favorite" src={favButton}/>
             </button>
