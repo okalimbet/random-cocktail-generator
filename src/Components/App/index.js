@@ -4,11 +4,11 @@ import './App.scss';
 import { apiCalls } from "../../apiCalls";
 import RecipePage from "../RecipePage";
 import FavoritePage from "../FavoritePage";
+import WelcomePage from "../WelcomePage";
 
 const App = () => {
   const [cocktailRandom, setCocktailRandom] = useState(null);
   const [error, setError] = useState("");
-  const [queriedCocktails, setQueriedCocktails] = useState([]);
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const getInfo = () => {
@@ -16,35 +16,9 @@ const App = () => {
       .then((data) => {
         console.log(data.drinks[0])
         setCocktailRandom(data.drinks[0])
-        // sortingRecipeByItems(cocktailRandom)
       })
       .catch((err) => setError(err.message));
   };
-
-  const searchCocktailByName = (cocktailName) => {
-    Promise.resolve(apiCalls.getCocktailByName())
-      .then((data) => {
-        if(data.drinks) {
-          
-        setQueriedCocktails(data.drinks);
-        } else {
-          console.log("sorry no such cocktail")
-        }
-      })
-      .catch((err) => setError(err.message));
-  };
-
-  const searchCocktailByIngredient = (cocktailIngredient) => {
-    Promise.resolve(apiCalls.getCocktailByIngredient())
-      .then((data) => {
-        if(data.drinks) {
-        setQueriedCocktails(data.drinks);
-        } else {
-          console.log("sorry no such ingredients in our recipes")
-        }
-      })
-      .catch((err) => setError(err.message));
-  }
 
   const addFavoriteRecipes = (id) => {
       const isDuplicate = favoriteRecipes.find(recipe => {
@@ -52,6 +26,7 @@ const App = () => {
     })
     if(!isDuplicate) {
       setFavoriteRecipes([...favoriteRecipes, cocktailRandom])
+      console.log(favoriteRecipes)
     }
   }
 
@@ -59,6 +34,10 @@ const App = () => {
   
   return (
     <main className="App">
+      <Route 
+        exact path="/welcome" 
+        component={WelcomePage} 
+      />
       {cocktailRandom && 
         <Route
           exact path="/recipe" 
@@ -71,12 +50,12 @@ const App = () => {
           )}
         />
       }
-      {cocktailRandom && 
+      {favoriteRecipes && 
         <Route
           exact path="/favorites" 
           render={() => (
             <FavoritePage
-              randomRecipe={favoriteRecipes}
+              favoriteRecipes={favoriteRecipes}
             /> 
           )}
         />

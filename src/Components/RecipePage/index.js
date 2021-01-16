@@ -36,8 +36,9 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   }
 
   const handleClick = () => {
-    setIsFavorite(true);
+    // setIsFavorite(true);
     addFavoriteRecipes(idDrink);
+    console.log(idDrink)
   }
 
   const getAllIngredientsMeasures = () => {
@@ -47,7 +48,8 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
     setMeasuresAll(measures)
   }
 
-  useEffect(() => getAllIngredientsMeasures(), randomRecipe);
+  useEffect(() => getAllIngredientsMeasures(), [ingredientsAll]);
+  // useEffect
 
   return (
     <section key={idDrink} className="recipe-view" data-testid={`recipe-view-${idDrink}`}> 
