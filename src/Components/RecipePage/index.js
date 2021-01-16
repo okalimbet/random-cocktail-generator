@@ -6,7 +6,7 @@ import rightButton from "../../Assets/right-button.png";
 import favButton from "../../Assets/favorite-button.png";
 
 
-const RecipePage = ({ randomRecipe }) => {
+const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   const { 
     idDrink, 
     strCategory, 
@@ -15,10 +15,10 @@ const RecipePage = ({ randomRecipe }) => {
     strGlass,
     strInstructions
   } = randomRecipe;
-
-  const [ingredientsAll, setIngredientsAll] = useState([])
-  const [measuresAll, setMeasuresAll] = useState([])
-  console.log(randomRecipe)
+// console.log(getInfo)
+  const [ingredientsAll, setIngredientsAll] = useState([]);
+  const [measuresAll, setMeasuresAll] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
   const ingredientItem = 'strIngredient';
   const measureItem = 'strMeasure'
   
@@ -32,9 +32,13 @@ const RecipePage = ({ randomRecipe }) => {
         return items;
         },[])
       .filter(item => item !== null);
-  
-    console.log(items)
     return items;
+  }
+
+  const handleClick = () => {
+    // setIsFavorite(true);
+    addFavoriteRecipes(idDrink);
+    // console.log("click been envoked")
   }
 
   const getAllIngredientsMeasures = () => {
@@ -44,20 +48,21 @@ const RecipePage = ({ randomRecipe }) => {
     setMeasuresAll(measures)
   }
 
-  useEffect(() => getAllIngredientsMeasures(), []);
+  useEffect(() => getAllIngredientsMeasures(), randomRecipe);
 
   return (
     <section key={idDrink} className="recipe-view" data-testid={`recipe-view-${idDrink}`}> 
-      <nav>
+      <div className="nav-container">
         <div className="titles-container">
           <h1 className="title-main">Recipe</h1>
           <h2 className="title-drink-name">{strDrink}</h2>
+          <button onClick={getInfo} className="button-generate">Not a Vibe!</button>
         </div>
         <Link to="/favorites" className="link-redirect">
           <h3 className="title-redirect">Go to my favorites</h3>
           <img className="image-redirect" src={rightButton}/>
         </Link>
-      </nav>
+      </div>
       <section className="sides-container">
         <section className="left-side">
           <img className="image-drink" src={strDrinkThumb}/>
@@ -73,7 +78,6 @@ const RecipePage = ({ randomRecipe }) => {
                   <li className="ingredient">{ingredient.toLowerCase()}</li>
                 }
               })
-              
             }
           </ul>
         </section>
@@ -84,7 +88,10 @@ const RecipePage = ({ randomRecipe }) => {
               <p className="recipe-detail">{strGlass}</p>
               <p className="recipe-detail">{strInstructions}</p>
             </div>
-            <button onClick="" className="button-favorite-wrapper">
+            <button 
+              onClick={handleClick} className="button-favorite-wrapper"
+              disabled={isFavorite ? true : false}
+              >
               <img className="button-favorite" src={favButton}/>
             </button>
         </section>
