@@ -31,6 +31,12 @@ describe("FavoritePage", () => {
     expect(screen.getByText("No Instructions Provided")).toBeInTheDocument();
   })
 
+  it("if there are no favorite drinks yet, display a message", () => {
+    render(<FavoritePage favoriteRecipes={[]}/>, { wrapper: MemoryRouter });
+    
+    expect(screen.getByText("You don't have any favorite drinks yet!")).toBeInTheDocument();
+  })
+
   it("it should redirect user to a welcome page by clicking on welcome page button", async () => {
     const history = createMemoryHistory();
     render(<Router history={history}><FavoritePage favoriteRecipes={mockData.favorites}/></Router>);
