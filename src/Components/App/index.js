@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import './App.scss';
 import { apiCalls } from "../../apiCalls";
 import RecipePage from "../RecipePage";
+import FavoritePage from "../FavoritePage";
 
 const App = () => {
   const [cocktailRandom, setCocktailRandom] = useState(null);
@@ -60,12 +61,22 @@ const App = () => {
     <main className="App">
       {cocktailRandom && 
         <Route
-          exact path="/recipe/" 
+          exact path="/recipe" 
           render={() => (
             <RecipePage
               randomRecipe={cocktailRandom}
               addFavoriteRecipes={addFavoriteRecipes}
               getInfo={getInfo}
+            /> 
+          )}
+        />
+      }
+      {cocktailRandom && 
+        <Route
+          exact path="/favorites" 
+          render={() => (
+            <FavoritePage
+              randomRecipe={favoriteRecipes}
             /> 
           )}
         />

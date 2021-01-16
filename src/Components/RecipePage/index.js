@@ -15,7 +15,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
     strGlass,
     strInstructions
   } = randomRecipe;
-// console.log(getInfo)
+  
   const [ingredientsAll, setIngredientsAll] = useState([]);
   const [measuresAll, setMeasuresAll] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -36,9 +36,8 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   }
 
   const handleClick = () => {
-    // setIsFavorite(true);
+    setIsFavorite(true);
     addFavoriteRecipes(idDrink);
-    // console.log("click been envoked")
   }
 
   const getAllIngredientsMeasures = () => {
