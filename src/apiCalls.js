@@ -10,20 +10,9 @@ const getData = (path) => {
   });
 };
 
-const urlBody = "https://www.thecocktaildb.com/api/json/v1/1/search.php?"
 export const apiCalls = {
 
   getRandomCocktail: () => {
     return getData(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
-  },
-
-  getCocktailByName: (cocktailName) => {
-    // return getData(`${urlBody}s=${cocktailName}`);
-    return getData('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
-  },
-
-  getCocktailByIngredient: (ingredientName) => {
-    // return getData(`${urlBody}-=${ingredientName}`);
-    return getData(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=vo`);
   }
 }

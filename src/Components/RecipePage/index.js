@@ -18,7 +18,6 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   
   const [ingredientsAll, setIngredientsAll] = useState([]);
   const [measuresAll, setMeasuresAll] = useState([]);
-  const [isFavorite, setIsFavorite] = useState(false);
   const ingredientItem = 'strIngredient';
   const measureItem = 'strMeasure'
   
@@ -36,7 +35,6 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   }
 
   const handleClick = () => {
-    // setIsFavorite(true);
     addFavoriteRecipes(idDrink);
     console.log(idDrink)
   }
@@ -49,7 +47,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   }
 
   useEffect(() => getAllIngredientsMeasures(), [ingredientsAll]);
-  // useEffect
+
 
   return (
     <section key={idDrink} className="recipe-view" data-testid={`recipe-view-${idDrink}`}> 
