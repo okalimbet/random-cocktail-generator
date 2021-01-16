@@ -1,7 +1,6 @@
 import React from "react";
 import './FavoritePage.scss';
 import { Link } from 'react-router-dom';
-import rightButton from "../../Assets/right-button.png";
 import leftButton from "../../Assets/left-button.png";
 import defaultImage from "../../Assets/default-image.jpg"
 

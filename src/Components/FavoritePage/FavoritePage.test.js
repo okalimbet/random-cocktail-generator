@@ -16,7 +16,7 @@ describe("FavoritePage", () => {
     expect(screen.getByAltText("cocktail-Caipirinha")).toBeInTheDocument();
     expect(screen.getByText("Amaretto Sweet & Sour")).toBeInTheDocument();
     expect(screen.getByAltText("cocktail-Amaretto Sweet & Sour")).toBeInTheDocument();
-
+    
     expect(screen.getByText("Favorite Recipes")).toBeInTheDocument();
 
     expect(screen.getByText("Welcome Page")).toBeInTheDocument();
