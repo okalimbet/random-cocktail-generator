@@ -4,18 +4,19 @@ import { apiCalls } from "../../apiCalls";
 import { Link } from 'react-router-dom';
 import rightButton from "../../Assets/right-button.png";
 import leftButton from "../../Assets/left-button.png";
+import defaultImage from "../../Assets/default-image.jpg"
 
 const FavoritePage = ({ favoriteRecipes }) => {
    
     return (
-      <section>
+      <section data-testid="favorite-drinks-element">
         <div className="nav-container">
-          <Link to="/welcome" className="link-redirect">
-            <img className="image-redirect" src={leftButton}/>
+          <Link to="/" className="link-redirect" data-testid="welcome-page-link">
+            <img className="image-redirect" src={leftButton} alt="welcome-page-icon"/>
             <h3 className="title-redirect">Welcome Page</h3>
           </Link>
           <div className="titles-container">
-            <h1 className="title-main">Recipe</h1>
+            <h1 className="title-main">Favorite Recipes</h1>
           </div>
         </div>
         <section className="cards-container">
@@ -24,11 +25,11 @@ const FavoritePage = ({ favoriteRecipes }) => {
               return (
                 <article key={`fav-drink-${cocktail.idDrink}`}>
                   <div className="card-wrapper">
-                  <img className="card-picture" src={cocktail.strDrinkThumb} alt="cocktail"/>
-                  <p>{cocktail.strDrink}</p>
+                  <img className="card-picture" src={cocktail.strDrinkThumb ? cocktail.strDrinkThumb : defaultImage} alt={ cocktail.strDrinkThumb ? `cocktail-${cocktail.strDrink}` : "default-image"}/>
+                  <p>{cocktail.strDrink ? cocktail.strDrink : "unknown"}</p>
                 </div>
                 <div>
-                <p>{cocktail.strInstructions}</p>
+                <p>{cocktail.strInstructions ? cocktail.strInstructions : "No Instructions Provided"}</p>
                 </div>
                 </article>
               )

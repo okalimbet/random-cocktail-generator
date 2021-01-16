@@ -4,7 +4,7 @@ import './WelcomePage.scss';
 const WelcomePage = () => {
     return (
       <section>
-        <Link to={`/recipe/`}>
+        <Link to={`/recipe`}>
           <button>Generate</button>
         </Link>
       </section>
