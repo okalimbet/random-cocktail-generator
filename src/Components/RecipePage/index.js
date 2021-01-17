@@ -35,7 +35,6 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
 
   const handleClick = () => {
     addFavoriteRecipes(idDrink);
-    console.log(idDrink)
   }
 
   const getAllIngredientsMeasures = (e) => {
@@ -48,7 +47,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   useEffect(() => getAllIngredientsMeasures(), [randomRecipe]);
 
   return (
-    <section key={idDrink} className="recipe-view" data-testid={`recipe-view-${idDrink}`}> 
+    <section key={idDrink} className="recipe-view" data-testid={`recipe-view`}> 
       <div className="nav-container">
         <div className="titles-container">
           <h1 className="title-main">Recipe</h1>
