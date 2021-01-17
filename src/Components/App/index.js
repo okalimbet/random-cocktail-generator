@@ -14,7 +14,6 @@ const App = () => {
   const getInfo = () => {
     Promise.resolve(apiCalls.getRandomCocktail())
       .then((data) => {
-        console.log(data.drinks[0])
         setCocktailRandom(data.drinks[0])
       })
       .catch((err) => setError(err.message));
@@ -26,7 +25,6 @@ const App = () => {
     })
     if(!isDuplicate) {
       setFavoriteRecipes([...favoriteRecipes, cocktailRandom])
-      console.log(favoriteRecipes)
     }
   }
 
@@ -35,7 +33,7 @@ const App = () => {
   return (
     <main className="App">
       <Route 
-        exact path="/welcome" 
+        exact path="/" 
         component={WelcomePage} 
       />
       {cocktailRandom && 

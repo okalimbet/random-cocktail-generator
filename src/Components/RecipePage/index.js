@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import './RecipePage.scss';
-import { apiCalls } from "../../apiCalls";
 import { Link } from 'react-router-dom'
 import rightButton from "../../Assets/right-button.png";
 import favButton from "../../Assets/favorite-button.png";
-
+import defaultImage from "../../Assets/default-image.jpg"
 
 const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   const { 
@@ -18,7 +17,6 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   
   const [ingredientsAll, setIngredientsAll] = useState([]);
   const [measuresAll, setMeasuresAll] = useState([]);
-  const [isFavorite, setIsFavorite] = useState(false);
   const ingredientItem = 'strIngredient';
   const measureItem = 'strMeasure'
   
@@ -36,64 +34,60 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   }
 
   const handleClick = () => {
-    // setIsFavorite(true);
     addFavoriteRecipes(idDrink);
-    console.log(idDrink)
   }
 
-  const getAllIngredientsMeasures = () => {
+  const getAllIngredientsMeasures = (e) => {
     const ingredients = sortingRecipeByItems(randomRecipe, ingredientItem);
     const measures = sortingRecipeByItems(randomRecipe, measureItem);
     setIngredientsAll(ingredients);
     setMeasuresAll(measures)
   }
 
-  useEffect(() => getAllIngredientsMeasures(), [ingredientsAll]);
-  // useEffect
+  useEffect(() => getAllIngredientsMeasures(), [randomRecipe]);
 
   return (
-    <section key={idDrink} className="recipe-view" data-testid={`recipe-view-${idDrink}`}> 
+    <section key={idDrink} className="recipe-view" data-testid={`recipe-view`}> 
       <div className="nav-container">
         <div className="titles-container">
           <h1 className="title-main">Recipe</h1>
-          <h2 className="title-drink-name">{strDrink}</h2>
+          <h2 className="title-drink-name">{strDrink ? strDrink : "Name is unknown"}</h2>
           <button onClick={getInfo} className="button-generate">Not a Vibe!</button>
         </div>
-        <Link to="/favorites" className="link-redirect">
+        <Link to="/favorites" className="link-redirect" data-testid="redirect-favorite-link">
           <h3 className="title-redirect">Go to my favorites</h3>
-          <img className="image-redirect" src={rightButton}/>
+          <img className="image-redirect" src={rightButton} alt="right-redirect-icon"/>
         </Link>
       </div>
       <section className="sides-container">
         <section className="left-side">
-          <img className="image-drink" src={strDrinkThumb}/>
+          <img className="image-drink" src={strDrinkThumb ? strDrinkThumb : defaultImage} alt={strDrinkThumb ? `recipe-${strDrink}` : "default-image"}/>
           <h3 className="title-secondary">Ingredients</h3>
           <ul className="list-ingredients">
             {
-              ingredientsAll.map((ingredient, index) => {
+              ingredientsAll.length ? ingredientsAll.map((ingredient, index) => {
                 if(ingredient && measuresAll[index]) {
                   return (
-                    <li className="ingredient">{ingredient.toLowerCase()} - {measuresAll[index].toLowerCase()}</li>
+                    <li key={`${idDrink}-${ingredient}`}className="ingredient">{ingredient.toLowerCase()} - {measuresAll[index].toLowerCase()}</li>
                   )
                 } else {
-                  <li className="ingredient">{ingredient.toLowerCase()}</li>
+                  <li key={`${idDrink}-${ingredient}`} className="ingredient">{ingredient.toLowerCase()}</li>
                 }
-              })
+              }) : (<li key="unknown" className="ingredient">Ingredients are unknown</li>)
             }
           </ul>
         </section>
         <section className="right-side">
             <h3 className="title-secondary">Instructions</h3>
             <div className="recipe-details-container">
-              <p className="recipe-detail">{strCategory}</p>
-              <p className="recipe-detail">{strGlass}</p>
-              <p className="recipe-detail">{strInstructions}</p>
+              <p className="recipe-detail">Category: {strCategory ? strCategory : "unknown"}</p>
+              <p className="recipe-detail">Type of glass: {strGlass ? strGlass : "any glass!"}</p>
+              <p className="recipe-detail">{strInstructions ? strInstructions : "no instructions included"}</p>
             </div>
             <button 
               onClick={handleClick} className="button-favorite-wrapper"
-              disabled={isFavorite ? true : false}
               >
-              <img className="button-favorite" src={favButton}/>
+              <img className="button-favorite" src={favButton} alt="favorite-button"/>
             </button>
         </section>
       </section>
