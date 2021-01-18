@@ -1,10 +1,9 @@
 import React from 'react';
 import { screen, render, waitFor } from '@testing-library/react';
-import mockData from '../../TestData/_mockData';
 import '@testing-library/jest-dom';
 import { MemoryRouter, Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'history';
 import WelcomePage from './index.js';
 
 describe("WelcomePage", () => {

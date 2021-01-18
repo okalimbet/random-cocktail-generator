@@ -19,7 +19,7 @@ describe("RecipePage", () => {
     expect(screen.getByText("Recipe")).toBeInTheDocument();
     expect(screen.getByText("Caipirinha")).toBeInTheDocument();
     expect(screen.getByText("Next Drink!")).toBeInTheDocument();
-    expect(screen.getByText("Go to my favorites")).toBeInTheDocument();
+    expect(screen.getByText("Go to my Favorites")).toBeInTheDocument();
     expect(screen.getByAltText("right-redirect-icon")).toBeInTheDocument();
     expect(screen.getByAltText("recipe-Caipirinha")).toBeInTheDocument();
     expect(screen.getByText("Ingredients")).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe("RecipePage", () => {
     expect(screen.getByAltText("favorite-button")).toBeInTheDocument();
   })
 
-  it("it should display default values when information is not available", () => {
+  it("should display default values when information is not available", () => {
     render(<RecipePage 
       randomRecipe={mockData.drinks[1]}
       addFavoriteRecipes={jest.fn()}
@@ -48,7 +48,7 @@ describe("RecipePage", () => {
       expect(screen.getByText("no instructions included")).toBeInTheDocument();
     })
 
-  it("it should redirect user to a favorite drinks page by clicking on Go to my favorites button", async () => {
+  it("should redirect user to a favorite drinks page by clicking on Go to my favorites button", async () => {
     const history = createMemoryHistory();
     render(<Router history={history}><RecipePage randomRecipe={mockData.drinks[0]}/></Router>);
     

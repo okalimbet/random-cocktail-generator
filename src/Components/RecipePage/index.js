@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './RecipePage.scss';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import rightButton from "../../Assets/right-button.png";
 import favButton from "../../Assets/favorite-button.png";
-import defaultImage from "../../Assets/default-image.jpg"
+import defaultImage from "../../Assets/default-image.jpg";
+import PropTypes from 'prop-types';
 
 const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   const { 
@@ -47,7 +48,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   useEffect(() => getAllIngredientsMeasures(), [randomRecipe]);
 
   return (
-    <section key={idDrink} className="recipe-view" data-testid={`recipe-view`}> 
+    <section key={idDrink} className="recipe-view" data-testid="recipe-view"> 
       <div className="nav-container">
         <div className="titles-container">
           <span className="circle-red-shape"></span>
@@ -56,11 +57,11 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
           <button onClick={getInfo} className="button-generate">Next Drink!</button>
         </div>
         <Link to="/favorites" className="link-redirect" data-testid="redirect-favorite-link">
-          <h3 className="title-redirect">Go to my favorites</h3>
+          <h3 className="title-redirect">Go to my Favorites</h3>
           <img className="image-redirect" src={rightButton} alt="right-redirect-icon"/>
         </Link>
       </div>
-      <section className="sides-container">
+      <section className="sides-container" data-testid="recipe-parts-details">
         <section className="left-side">
           <img className="image-drink" src={strDrinkThumb ? strDrinkThumb : defaultImage} alt={strDrinkThumb ? `recipe-${strDrink}` : "default-image"}/>
           <h3 className="title-secondary-ingredients">Ingredients</h3>
@@ -94,7 +95,12 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
       </section>
     </section>
   )
-  
 }
 
 export default RecipePage;
+
+RecipePage.propTypes = {
+  randomRecipe: PropTypes.object,
+  addFavoriteRecipes: PropTypes.func, 
+  getInfo:  PropTypes.func
+}

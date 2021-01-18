@@ -9,7 +9,7 @@ import FavoritePage from './index.js';
 
 describe("FavoritePage", () => {
 
-  it("it should render correctly", () => {
+  it("should render correctly", () => {
     render(<FavoritePage favoriteRecipes={mockData.favorites}/>, { wrapper: MemoryRouter });
     
     expect(screen.getByText("Caipirinha")).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe("FavoritePage", () => {
     
     expect(screen.getByText("Favorite Recipes")).toBeInTheDocument();
 
-    expect(screen.getByText("Welcome Page")).toBeInTheDocument();
+    expect(screen.getByText("Go to Welcome Page")).toBeInTheDocument();
     expect(screen.getByAltText("welcome-page-icon")).toBeInTheDocument();
   })
 
@@ -37,7 +37,7 @@ describe("FavoritePage", () => {
     expect(screen.getByText("You don't have any favorite drinks yet!")).toBeInTheDocument();
   })
 
-  it("it should redirect user to a welcome page by clicking on welcome page button", async () => {
+  it("should redirect user to a welcome page by clicking on welcome page button", async() => {
     const history = createMemoryHistory();
     render(<Router history={history}><FavoritePage favoriteRecipes={mockData.favorites}/></Router>);
     
@@ -45,5 +45,15 @@ describe("FavoritePage", () => {
     userEvent.click(welcomePageBtn);
 
     await waitFor(() => expect(history.location.pathname).toBe("/"));
+  })
+
+  it("should redirect user to a random recipe page by clicking on go to recipe page button", async() => {
+    const history = createMemoryHistory();
+    render(<Router history={history}><FavoritePage favoriteRecipes={mockData.favorites}/></Router>);
+    
+    const recipePageBtn = screen.getByTestId("redirect-recipe-link");
+    userEvent.click(recipePageBtn);
+
+    await waitFor(() => expect(history.location.pathname).toBe("/recipe"));
   })
 })
