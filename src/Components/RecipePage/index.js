@@ -49,11 +49,11 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   return (
     <section key={idDrink} className="recipe-view" data-testid={`recipe-view`}> 
       <div className="nav-container">
-        <span className="circle-red-shape"></span>
         <div className="titles-container">
+        <span className="circle-red-shape"></span>
           <h1 className="title-main">Recipe</h1>
           <h2 className="title-drink-name">{strDrink ? strDrink : "Name is unknown"}</h2>
-          <button onClick={getInfo} className="button-generate">Not a Vibe!</button>
+          <button onClick={getInfo} className="button-generate">Next Drink!</button>
         </div>
         <Link to="/favorites" className="link-redirect" data-testid="redirect-favorite-link">
           <h3 className="title-redirect">Go to my favorites</h3>
@@ -85,7 +85,6 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
               <p className="recipe-detail">Type of glass: {strGlass ? strGlass : "any glass!"}</p>
               <p className="recipe-detail">{strInstructions ? strInstructions : "no instructions included"}</p>
             </div>
-            {/* <span className="circle-purple-shape"></span> */}
             <div className="favorite-btn-container">
             <button onClick={handleClick} className="button-favorite-wrapper">
               <img className="button-favorite" src={favButton} alt="favorite-button"/>

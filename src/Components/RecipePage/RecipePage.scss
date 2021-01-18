@@ -5,27 +5,24 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-container {
   display: flex;
   justify-content: center;
   position: relative;
-  height: 30%;
+  height: 10em;
   margin: 0;
 }
 
 .titles-container {
-  height: 5em;
-  margin: 0em 0 2em 0;
+  font-size: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 1;
-  position: absolute;
-  left: 20.5em;
-  color: $main-white;
+  left: 18em;
+  color: white;
   width: 30em;
 }
 
@@ -49,29 +46,13 @@
 }
 
 .circle-red-shape{
-  width: 30em;
-  height: 30em;
+  width: 25em;
+  height: 25em;
   border-radius: 50%;
   background-color: $main-red;
   position: absolute;
   top: -15em;
-  left: 20em;
-  z-index: 0;
-}
-
-.circle-purple-shape {
-  width: 20em;
-  height: 20em;
-  border-top-right-radius:0;
-  border-top-left-radius:100%;
-  border-bottom-right-radius:0;
-  border-bottom-left-radius:0;
-  background-color: $main-purple;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  shape-outside: polygon(0 100% 0 0);
-  z-index: 0;
+  z-index: -1;
 }
 
 .link-redirect {
@@ -81,7 +62,7 @@
   right: 2em;
   display: flex;
   text-decoration: none;
-  color: &main-purple;
+  color: $main-purple;
   align-items: center;
   text-align: center;
   &:hover img {
@@ -108,12 +89,12 @@
 }
 
 .title-main {
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0.5em;
 }
 
 .title-drink-name {
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 0.5em;
 }
 
@@ -125,13 +106,9 @@
 
 .sides-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 65%;
-  margin-top: 5%;
-  position: absolute;
-  bottom: 0;
+  height: 75%;
+  margin: 1% 1% 0% 1%;
+  overflow: scroll;
 }
 
 .left-side {
@@ -146,10 +123,9 @@
 }
 
 .right-side {
-  height: 100%;
-  width: 60vw;
   position: relative;
-  margin: 0em 0em 0 1.5em;
+  width: 62vw;
+  margin: 2em 0em 0 1.5em;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -172,22 +148,23 @@
 }
 
 .recipe-details-container {
-  height: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 7em 0 0 0;
+  margin: 7em 1em 1em 0em;
   text-align: left;
   white-space: wrap;
 }
 
 .recipe-details-container p {
   text-align: left;
+  margin: 1em 0;
 }
 
 .favorite-btn-container {
   width: 100%;
   display: flex;
-  margin: 1em 2em;
+  margin: 3em 2em;
   
 }
 

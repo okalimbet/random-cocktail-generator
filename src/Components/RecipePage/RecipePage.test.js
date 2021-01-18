@@ -18,7 +18,7 @@ describe("RecipePage", () => {
 
     expect(screen.getByText("Recipe")).toBeInTheDocument();
     expect(screen.getByText("Caipirinha")).toBeInTheDocument();
-    expect(screen.getByText("Not a Vibe!")).toBeInTheDocument();
+    expect(screen.getByText("Next Drink!")).toBeInTheDocument();
     expect(screen.getByText("Go to my favorites")).toBeInTheDocument();
     expect(screen.getByAltText("right-redirect-icon")).toBeInTheDocument();
     expect(screen.getByAltText("recipe-Caipirinha")).toBeInTheDocument();
@@ -67,7 +67,7 @@ describe("RecipePage", () => {
       getInfo={mockedGenerateBtn}
       />, { wrapper: MemoryRouter });
 
-    const generateRecipeBtn = screen.getByText("Not a Vibe!");
+    const generateRecipeBtn = screen.getByText("Next Drink!");
     userEvent.click(generateRecipeBtn);
 
     expect(mockedGenerateBtn).toBeCalledTimes(1);
