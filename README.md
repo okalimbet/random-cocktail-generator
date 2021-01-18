@@ -1,6 +1,6 @@
 # Random Cocktail Generator - Turing Mod 3 Solo Project
 
-### [Random Cocktail Generator Site]()
+### [Random Cocktail Generator Link](https://random-coctail-generator.vercel.app/)
 
 ### [Link To My Repo](https://github.com/scripka/random-coctail-generator)
 
@@ -58,6 +58,7 @@ This project was aimed to test our knowledge of the concepts in MOD 3.
 - Router
 - JSX
 - Jest
+- Vercel(deployment)
 
 ## Challenges
 
