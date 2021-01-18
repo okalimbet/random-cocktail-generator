@@ -5,6 +5,7 @@ import { apiCalls } from "../../apiCalls";
 import RecipePage from "../RecipePage";
 import FavoritePage from "../FavoritePage";
 import WelcomePage from "../WelcomePage";
+import LoadinPage from '../LoadingPage';
 
 const App = () => {
   const [cocktailRandom, setCocktailRandom] = useState(null);
@@ -36,6 +37,13 @@ const App = () => {
         exact path="/" 
         component={WelcomePage} 
       />
+
+      {!cocktailRandom &&
+        <Route 
+          exact path="/recipe" 
+          component={LoadingPage}
+      />}
+
       {cocktailRandom && 
         <Route
           exact path="/recipe" 
