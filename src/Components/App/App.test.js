@@ -119,4 +119,25 @@ describe("App", () => {
     
     await waitFor(() => expect(screen.getByTestId("recipe-view")).toBeInTheDocument());
   })
+
+  it("If url is incorrect it should render an error page", async() => {
+    render(
+      <MemoryRouter initialEntries={["/123"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => expect(screen.getByTestId("error-page-element")).toBeInTheDocument());
+  })
+
+  it("If the fetch is failed or the data is wrong, show the error page component", async() => {
+    apiCalls.getRandomCocktail.mockResolvedValue("wrongData");
+    render(
+      <MemoryRouter initialEntries={["/recipe"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => expect(screen.getByTestId("error-page-element")).toBeInTheDocument());
+  })
 });
