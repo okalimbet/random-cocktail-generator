@@ -19,7 +19,7 @@ describe("RecipePage", () => {
     expect(screen.getByText("Recipe")).toBeInTheDocument();
     expect(screen.getByText("Caipirinha")).toBeInTheDocument();
     expect(screen.getByText("Next Drink!")).toBeInTheDocument();
-    expect(screen.getByText("Go to my favorites")).toBeInTheDocument();
+    expect(screen.getByText("Go to my Favorites")).toBeInTheDocument();
     expect(screen.getByAltText("right-redirect-icon")).toBeInTheDocument();
     expect(screen.getByAltText("recipe-Caipirinha")).toBeInTheDocument();
     expect(screen.getByText("Ingredients")).toBeInTheDocument();

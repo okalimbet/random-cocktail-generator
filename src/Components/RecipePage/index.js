@@ -48,7 +48,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   useEffect(() => getAllIngredientsMeasures(), [randomRecipe]);
 
   return (
-    <section key={idDrink} className="recipe-view" data-testid={`recipe-view`}> 
+    <section key={idDrink} className="recipe-view" data-testid="recipe-view"> 
       <div className="nav-container">
         <div className="titles-container">
           <span className="circle-red-shape"></span>
@@ -57,7 +57,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
           <button onClick={getInfo} className="button-generate">Next Drink!</button>
         </div>
         <Link to="/favorites" className="link-redirect" data-testid="redirect-favorite-link">
-          <h3 className="title-redirect">Go to my favorites</h3>
+          <h3 className="title-redirect">Go to my Favorites</h3>
           <img className="image-redirect" src={rightButton} alt="right-redirect-icon"/>
         </Link>
       </div>

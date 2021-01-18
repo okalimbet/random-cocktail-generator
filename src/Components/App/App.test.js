@@ -4,7 +4,7 @@ import mockData from '../../TestData/_mockData';
 import '@testing-library/jest-dom';
 import { MemoryRouter, Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'history';
 import { apiCalls } from "../../apiCalls.js";
 import App from './index.js';
 jest.mock("../../apiCalls");
@@ -22,6 +22,7 @@ describe("App", () => {
 
   it("When user clicks on SHAKE button a recipePage is displayed", async() => {
     const history = createMemoryHistory();
+    
     render(
       <Router history={history}>
         <App />
@@ -34,7 +35,7 @@ describe("App", () => {
     userEvent.click(shakeBtn);
 
     await waitFor(() =>
-      expect(history.location.pathname).toBe("/recipe"),
+      expect(history.location.pathname).toBe("/recipe")
     );
 
     await waitFor(() =>
@@ -101,5 +102,21 @@ describe("App", () => {
     userEvent.click(welcomePageBtn);
     
     await waitFor(() => expect(screen.getByTestId("welcome-page-element")).toBeInTheDocument());
+  })
+
+  it("When user on the favorites page, by clicking on a go to recipe button they will be redirected to the random recipe page", async() => {
+    render(
+      <MemoryRouter initialEntries={["/favorites"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => expect(screen.getByTestId("favorite-drinks-element")).toBeInTheDocument());
+
+    const recipePageBtn = await waitFor(() => screen.getByTestId("redirect-recipe-link"));
+  
+    userEvent.click(recipePageBtn);
+    
+    await waitFor(() => expect(screen.getByTestId("recipe-view")).toBeInTheDocument());
   })
 });
