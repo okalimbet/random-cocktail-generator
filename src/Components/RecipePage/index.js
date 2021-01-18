@@ -50,7 +50,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
     <section key={idDrink} className="recipe-view" data-testid={`recipe-view`}> 
       <div className="nav-container">
         <div className="titles-container">
-        <span className="circle-red-shape"></span>
+          <span className="circle-red-shape"></span>
           <h1 className="title-main">Recipe</h1>
           <h2 className="title-drink-name">{strDrink ? strDrink : "Name is unknown"}</h2>
           <button onClick={getInfo} className="button-generate">Next Drink!</button>
