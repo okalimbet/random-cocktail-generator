@@ -5,13 +5,14 @@
   margin: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .nav-container {
   display: flex;
   justify-content: center;
   position: relative;
-  height: 20%;
+  height: 30%;
   margin: 0;
 }
 
@@ -21,19 +22,89 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
+  position: absolute;
+  left: 20.5em;
+  color: $main-white;
+  width: 30em;
+}
+
+.button-generate {
+  outline: 0;
+  border: 0;
+  height: 2em;
+  color: white;
+  cursor: pointer;
+  background-color:$main-red;
+  text-align: center;
+  margin: 2em;
+  &:hover {
+    transform: scale(1.3);
+    border: 1px solid white;
+  }
+  &:focus {
+    transform: scale(1);
+    border: 1px solid white;
+  }
+}
+
+.circle-red-shape{
+  width: 30em;
+  height: 30em;
+  border-radius: 50%;
+  background-color: $main-red;
+  position: absolute;
+  top: -15em;
+  left: 20em;
+  z-index: 0;
+}
+
+.circle-purple-shape {
+  width: 20em;
+  height: 20em;
+  border-top-right-radius:0;
+  border-top-left-radius:100%;
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+  background-color: $main-purple;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  shape-outside: polygon(0 100% 0 0);
+  z-index: 0;
 }
 
 .link-redirect {
-  height: 5em;
+  height: 2.5em;
   margin: 2em;
   position: absolute;
   right: 2em;
   display: flex;
+  text-decoration: none;
+  color: &main-purple;
+  align-items: center;
+  text-align: center;
+  &:hover img {
+    animation: slide-fwd-right 1s ease-out infinite both;
+  }
+}
+
+.title-redirect {
+  margin: 0;
 }
 
 .image-redirect {
   width: 2.5em;
   height: 2.5em;
+  margin: 0;
+}
+@keyframes slide-fwd-right {
+  0% {
+    transform: translateZ(0) translateX(0);
+  }
+  100% {
+    transform: translateZ(160px) translateX(10px);
+  }
 }
 
 .title-main {
@@ -47,8 +118,9 @@
 }
 
 .image-drink{
-  width: 20em;
+  width: 15em;
   margin-top: 1em;
+  border-radius: 50%;
 }
 
 .sides-container {
@@ -56,28 +128,36 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 75%;
-  margin-top: 2em;
+  height: 65%;
+  margin-top: 5%;
+  position: absolute;
+  bottom: 0;
 }
 
 .left-side {
   height: 100%;
   width: 38vw;
   position: relative;
-  margin: 1.5em;
+  margin: 0em 1em 0em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .right-side {
   height: 100%;
   width: 60vw;
   position: relative;
-  margin: 1.5em;
+  margin: 0em 0em 0 1.5em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.button-favorite-wrapper {
-  padding: 0;
-  border-radius: 50%;
-  border: 1px solid $main-red;
+.title-secondary {
+  position: absolute;
+  top: 0;
 }
 
 .list-ingredients {
@@ -92,14 +172,44 @@
 }
 
 .recipe-details-container {
-  height: 50%;
+  height: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 7em 0 0 0;
+  text-align: left;
+  white-space: wrap;
+}
+
+.recipe-details-container p {
+  text-align: left;
+}
+
+.favorite-btn-container {
+  width: 100%;
+  display: flex;
+  margin: 1em 2em;
+  
+}
+
+.button-favorite {
+  height: 5em;
+  width: 5em;
 }
 
 .button-favorite-wrapper {
-  position: absolute;
-  right: 5em;
-  top: 33em;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid $main-red;
+  height: 5em;
+  width: 5em;
+  z-index: 1;
+  &:hover {
+    transform: scale(1.3);
+  }
+  &:focus {
+    transform: scale(1);
+  }
 }
