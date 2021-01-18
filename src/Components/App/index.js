@@ -5,7 +5,7 @@ import { apiCalls } from "../../apiCalls";
 import RecipePage from "../RecipePage";
 import FavoritePage from "../FavoritePage";
 import WelcomePage from "../WelcomePage";
-import LoadinPage from '../LoadingPage';
+import LoadingPage from '../LoadingPage';
 
 const App = () => {
   const [cocktailRandom, setCocktailRandom] = useState(null);
