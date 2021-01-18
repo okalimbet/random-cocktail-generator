@@ -9,7 +9,7 @@ import FavoritePage from './index.js';
 
 describe("FavoritePage", () => {
 
-  it("it should render correctly", () => {
+  it("should render correctly", () => {
     render(<FavoritePage favoriteRecipes={mockData.favorites}/>, { wrapper: MemoryRouter });
     
     expect(screen.getByText("Caipirinha")).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe("FavoritePage", () => {
     expect(screen.getByText("You don't have any favorite drinks yet!")).toBeInTheDocument();
   })
 
-  it("it should redirect user to a welcome page by clicking on welcome page button", async () => {
+  it("should redirect user to a welcome page by clicking on welcome page button", async() => {
     const history = createMemoryHistory();
     render(<Router history={history}><FavoritePage favoriteRecipes={mockData.favorites}/></Router>);
     
