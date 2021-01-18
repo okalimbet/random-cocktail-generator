@@ -3,7 +3,7 @@ import { screen, render, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter, Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'history';
 import WelcomePage from './index.js';
 
 describe("WelcomePage", () => {
