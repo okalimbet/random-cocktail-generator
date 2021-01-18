@@ -61,7 +61,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
           <img className="image-redirect" src={rightButton} alt="right-redirect-icon"/>
         </Link>
       </div>
-      <section className="sides-container">
+      <section className="sides-container" data-testid="recipe-parts-details">
         <section className="left-side">
           <img className="image-drink" src={strDrinkThumb ? strDrinkThumb : defaultImage} alt={strDrinkThumb ? `recipe-${strDrink}` : "default-image"}/>
           <h3 className="title-secondary-ingredients">Ingredients</h3>

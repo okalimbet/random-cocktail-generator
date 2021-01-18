@@ -72,8 +72,6 @@ describe("App", () => {
       </MemoryRouter>
     );
 
-    await waitFor(() => expect(screen.getByTestId("recipe-view")).toBeInTheDocument());
-
     const favoriteBtn = await waitFor(() => screen.getByAltText("favorite-button"));
   
     userEvent.click(favoriteBtn);
@@ -86,6 +84,20 @@ describe("App", () => {
     expect(screen.getByText("Caipirinha")).toBeInTheDocument(),
     expect(screen.getByAltText("cocktail-Caipirinha")).toBeInTheDocument()
     );
+  })
+
+  it("When user on the recipe page they can click on Next Drink btn to display another drink", async() => {
+    render(
+      <MemoryRouter initialEntries={["/recipe"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    const nextDrinkBtn = await waitFor(() => screen.getByText("Next Drink!"));
+  
+    userEvent.click(nextDrinkBtn);
+    
+    await waitFor(() => screen.getByTestId("recipe-parts-details"));
   })
 
   it("When user on the favorites page, by clicking on welcome page they will be redirected to the welcome page", async() => {
