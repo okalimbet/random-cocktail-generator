@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/animations";
 
 .recipe-view {
   height: 100%;
@@ -11,73 +12,122 @@
   display: flex;
   justify-content: center;
   position: relative;
-  height: 20%;
+  height: 10em;
   margin: 0;
 }
 
 .titles-container {
-  height: 5em;
-  margin: 0em 0 2em 0;
+  font-size: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
+  left: 18em;
+  color: white;
+  width: 30em;
+  animation: 1.5s ease-out 0s 1 slideInFromTop;
+
+}
+
+.button-generate {
+  outline: 0;
+  border: 0;
+  height: 2em;
+  color: white;
+  cursor: pointer;
+  background-color:$main-red;
+  text-align: center;
+  margin: 2em;
+  &:hover {
+    animation: heartbeat 1.5s ease-in-out infinite both;
+    border: 1px solid white;
+  }
+  &:focus {
+    transform: scale(1);
+    border: 1px solid white;
+  }
+}
+
+.circle-red-shape{
+  width: 25em;
+  height: 25em;
+  border-radius: 50%;
+  background-color: $main-red;
+  position: absolute;
+  top: -15em;
+  z-index: -1;
 }
 
 .link-redirect {
-  height: 5em;
+  height: 2.5em;
   margin: 2em;
   position: absolute;
   right: 2em;
   display: flex;
+  text-decoration: none;
+  color: $main-purple;
+  align-items: center;
+  text-align: center;
+  &:hover img {
+    animation: slide-fwd-right 1s ease-out infinite both;
+  }
+}
+
+.title-redirect {
+  margin: 0;
 }
 
 .image-redirect {
   width: 2.5em;
   height: 2.5em;
+  margin: 0;
 }
 
 .title-main {
-  font-size: 2em;
-  margin: 0.5em;
-}
-
-.title-drink-name {
   font-size: 1.5em;
   margin: 0.5em;
 }
 
+.title-drink-name {
+  font-size: 1em;
+  margin: 0.5em;
+}
+
 .image-drink{
-  width: 20em;
+  width: 15em;
   margin-top: 1em;
+  border-radius: 50%;
 }
 
 .sides-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
   height: 75%;
-  margin-top: 2em;
+  margin: 1% 1% 0% 1%;
 }
 
 .left-side {
   height: 100%;
   width: 38vw;
   position: relative;
-  margin: 1.5em;
+  margin: 0em 1em 0em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .right-side {
-  height: 100%;
-  width: 60vw;
   position: relative;
-  margin: 1.5em;
+  width: 62vw;
+  margin: 2em 0em 0 1.5em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.button-favorite-wrapper {
-  padding: 0;
-  border-radius: 50%;
-  border: 1px solid $main-red;
+.title-secondary {
+  position: absolute;
+  top: 0;
 }
 
 .list-ingredients {
@@ -92,14 +142,44 @@
 }
 
 .recipe-details-container {
-  height: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 7em 1em 1em 0em;
+  text-align: left;
+  white-space: wrap;
+}
+
+.recipe-details-container p {
+  text-align: left;
+  margin: 1em 0;
+}
+
+.favorite-btn-container {
+  width: 100%;
+  display: flex;
+  margin: 3em 2em;
+}
+
+.button-favorite {
+  height: 5em;
+  width: 5em;
 }
 
 .button-favorite-wrapper {
-  position: absolute;
-  right: 5em;
-  top: 33em;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid $main-red;
+  height: 5em;
+  width: 5em;
+  z-index: 1;
+  &:hover {
+    animation: heartbeat 1.5s ease-out infinite both;
+  }
+  &:focus {
+    border: 5px solid $main-red;
+  }
 }

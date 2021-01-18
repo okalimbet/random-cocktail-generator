@@ -50,9 +50,10 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
     <section key={idDrink} className="recipe-view" data-testid={`recipe-view`}> 
       <div className="nav-container">
         <div className="titles-container">
+          <span className="circle-red-shape"></span>
           <h1 className="title-main">Recipe</h1>
           <h2 className="title-drink-name">{strDrink ? strDrink : "Name is unknown"}</h2>
-          <button onClick={getInfo} className="button-generate">Not a Vibe!</button>
+          <button onClick={getInfo} className="button-generate">Next Drink!</button>
         </div>
         <Link to="/favorites" className="link-redirect" data-testid="redirect-favorite-link">
           <h3 className="title-redirect">Go to my favorites</h3>
@@ -62,7 +63,7 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
       <section className="sides-container">
         <section className="left-side">
           <img className="image-drink" src={strDrinkThumb ? strDrinkThumb : defaultImage} alt={strDrinkThumb ? `recipe-${strDrink}` : "default-image"}/>
-          <h3 className="title-secondary">Ingredients</h3>
+          <h3 className="title-secondary-ingredients">Ingredients</h3>
           <ul className="list-ingredients">
             {
               ingredientsAll.length ? ingredientsAll.map((ingredient, index) => {
@@ -84,11 +85,11 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
               <p className="recipe-detail">Type of glass: {strGlass ? strGlass : "any glass!"}</p>
               <p className="recipe-detail">{strInstructions ? strInstructions : "no instructions included"}</p>
             </div>
-            <button 
-              onClick={handleClick} className="button-favorite-wrapper"
-              >
+            <div className="favorite-btn-container">
+            <button onClick={handleClick} className="button-favorite-wrapper">
               <img className="button-favorite" src={favButton} alt="favorite-button"/>
             </button>
+            </div>
         </section>
       </section>
     </section>
