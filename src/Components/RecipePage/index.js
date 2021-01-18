@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './RecipePage.scss';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import rightButton from "../../Assets/right-button.png";
 import favButton from "../../Assets/favorite-button.png";
-import defaultImage from "../../Assets/default-image.jpg"
+import defaultImage from "../../Assets/default-image.jpg";
+import PropTypes from 'prop-types';
 
 const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
   const { 
@@ -94,7 +95,12 @@ const RecipePage = ({ randomRecipe, addFavoriteRecipes, getInfo }) => {
       </section>
     </section>
   )
-  
 }
 
 export default RecipePage;
+
+RecipePage.propTypes = {
+  randomRecipe: PropTypes.object,
+  addFavoriteRecipes: PropTypes.func, 
+  getInfo:  PropTypes.func
+}

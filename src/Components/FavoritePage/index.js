@@ -2,7 +2,8 @@ import React from "react";
 import './FavoritePage.scss';
 import { Link } from 'react-router-dom';
 import leftButton from "../../Assets/left-button.png";
-import defaultImage from "../../Assets/default-image.jpg"
+import defaultImage from "../../Assets/default-image.jpg";
+import PropTypes from 'prop-types';
 
 const FavoritePage = ({ favoriteRecipes }) => {
     
@@ -58,6 +59,10 @@ const FavoritePage = ({ favoriteRecipes }) => {
       </section>
     </section>
   )
+}
+
+FavoritePage.propTypes = {
+  favoriteRecipes: PropTypes.array
 }
 
 export default FavoritePage;
