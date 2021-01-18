@@ -71,10 +71,12 @@ const App = () => {
             )}
           />
         }
+
         <Route 
           exact path="/" 
           component={WelcomePage} 
         />
+        
         <Route component={ErrorPage} />
       </Switch>
     </main>

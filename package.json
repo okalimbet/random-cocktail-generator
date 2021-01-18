@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.3"
+    "@testing-library/react": "^11.2.3",
+    "eslint": "^7.18.0"
   }
 }
