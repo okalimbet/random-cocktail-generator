@@ -14,5 +14,9 @@ export const apiCalls = {
 
   getRandomCocktail: () => {
     return getData(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
+  },
+
+  getCocktailById: (id) => {
+    return getData(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
   }
 }
