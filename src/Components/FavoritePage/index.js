@@ -53,7 +53,8 @@ const FavoritePage = ({ favoriteRecipes }) => {
         {
           favoriteRecipes.map(cocktail => {
             return (
-              <article key={`fav-drink-${cocktail.idDrink}`} className="recipe-card">
+              <Link className="recipe-card-wrapper" to={`/recipe/${cocktail.idDrink}`} key={`${cocktail.idDrink}`}>
+              <article className="recipe-card-container">
                 <div className="card-wrapper">
                   <img className="card-picture" src={cocktail.strDrinkThumb ? cocktail.strDrinkThumb : defaultImage} alt={ cocktail.strDrinkThumb ? `cocktail-${cocktail.strDrink}` : "default-image"}/>
                   <p>{cocktail.strDrink ? cocktail.strDrink : "unknown"}</p>
@@ -62,6 +63,7 @@ const FavoritePage = ({ favoriteRecipes }) => {
                   <p className="recipe-card-instructions">{cocktail.strInstructions ? cocktail.strInstructions : "No Instructions Provided"}</p>
                 </div>
               </article>
+              </Link>
             )
           })
         }

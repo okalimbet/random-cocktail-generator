@@ -65,7 +65,7 @@
   justify-content: space-between;
 }
 
-.recipe-card {
+.recipe-card-wrapper {
   width: 30em;
   height: 18em;
   display: flex;
@@ -76,6 +76,14 @@
   margin: 1em;
   padding: 1em;
   font-size: 0.8em;
+  text-decoration: none;
+  color: black;
+}
+
+.recipe-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
