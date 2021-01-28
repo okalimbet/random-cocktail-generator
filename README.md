@@ -1,6 +1,6 @@
 # Random Cocktail Generator - Turing Mod 3 Solo Project
 
-### [Random Cocktail Generator Link](https://random-cocktail-generator.vercel.app/)
+### [Random Cocktail Generator Link](https://random-cocktail-generator.herokuapp.com/)
 
 ### [Link To My Repo](https://github.com/scripka/random-coctail-generator)
 
